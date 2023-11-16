@@ -103,7 +103,7 @@ users.post("/users", async (req, res) => {
 });
 
 // PATCH (update) a specific user by ID
-users.patch("/users/:id", getUser, async (req, res) => {
+users.patch("/users/update/:id", getUser, async (req, res) => {
   if (req.body.firstName != null) {
     res.user.firstName = req.body.firstName;
   }

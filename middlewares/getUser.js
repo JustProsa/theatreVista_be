@@ -3,7 +3,7 @@ const UserModel = require("../models/user");
 
 const getUser = async (req, res, next) => {
   try {
-    const user = await UserModel.findOne({ username: req.params.username });
+    const user = await UserModel.findById(req.params.id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

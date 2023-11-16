@@ -88,6 +88,7 @@ shows.get("/shows", async (req, res) => {
 
   try {
     const shows = await ShowModel.find()
+      .sort({ totalRating: -1 }) // Ordina in ordine decrescente per totalRating
       .limit(pageSize)
       .skip((page - 1) * pageSize);
 
