@@ -5,6 +5,7 @@ const usersRoute = require("./routes/users");
 const showsRoute = require("./routes/shows");
 const loginRoute = require("./routes/login");
 const reviewsRoute = require("./routes/reviews");
+const reportsRoute = require("./routes/reports");
 require("dotenv").config();
 const path = require("path");
 
@@ -23,6 +24,7 @@ app.use("/", usersRoute);
 app.use("/", showsRoute);
 app.use("/", loginRoute);
 app.use("/", reviewsRoute);
+app.use("/", reportsRoute);
 
 mongoose.connect(
   "mongodb+srv://theroescode:6a9d0Ii16IXqNg87@happycluster.0r5fkx1.mongodb.net/TheatreVista",

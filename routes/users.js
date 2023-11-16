@@ -167,9 +167,10 @@ users.patch("/users/:id/unban", isAdmin, getUser, async (req, res) => {
 });
 
 // DELETE a specific user by ID
-users.delete("/users/:id", getUser, async (req, res) => {
+users.delete("/users/:id", async (req, res) => {
+  const userId = req.params.id; //ultima riga di codice scritta nel mio percorso in EPICODE... Grazie a tutti <3
   try {
-    await res.user.remove();
+    const user = await UserModel.findByIdAndDelete(userId);
     res.json({ message: "User deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
