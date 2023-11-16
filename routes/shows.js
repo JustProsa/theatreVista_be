@@ -108,6 +108,32 @@ shows.get("/shows", async (req, res) => {
   }
 });
 
+// GET the shows in the db ordered by STARTDATE
+shows.get("/shows/bystartdate", async (req, res) => {
+  const { page = 1, pageSize = 4, sortBy = "startDate" } = req.query;
+
+  try {
+    const shows = await ShowModel.find()
+      .sort({ [sortBy]: 1 }) // Ordina in base alla data di inizio in ordine crescente
+      .limit(pageSize)
+      .skip((page - 1) * pageSize);
+
+    const totalShows = await ShowModel.count();
+
+    res.status(200).send({
+      statusCode: 200,
+      currentPage: Number(page),
+      totalPages: Math.ceil(totalShows / pageSize),
+      totalShows,
+      shows,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .send({ statusCode: 500, message: "Errore interno del server" });
+  }
+});
+
 // GET a specific show by id
 shows.get("/shows/:id", async (req, res) => {
   const { id } = req.params;
