@@ -1,4 +1,11 @@
 {
+  "name": "be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": ">=14.20.*"
+  },
   "scripts": {
     "dev": "nodemon server.js"
   },
