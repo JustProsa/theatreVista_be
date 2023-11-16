@@ -150,6 +150,22 @@ users.patch("/users/:id/ban", isAdmin, getUser, async (req, res) => {
   }
 });
 
+// PATCH (unban) a specific user by ID
+users.patch("/users/:id/unban", isAdmin, getUser, async (req, res) => {
+  try {
+    if (!res.user.isBanned) {
+      return res.status(400).json({ message: "Utente non bannato" });
+    }
+
+    res.user.isBanned = false;
+
+    const updatedUser = await res.user.save();
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 // DELETE a specific user by ID
 users.delete("/users/:id", getUser, async (req, res) => {
   try {
