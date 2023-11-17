@@ -42,3 +42,5 @@ app.listen(PORT, () => console.log(`Server up and running on PORT: ${PORT}`));
 
 // Installato bcrypt e jsonwebtoken --> npm i bcrypt jsonwebtoken
 // Installato multer e cloudinary --> npm i multer multer-storage-cloudinary cloudinary
+
+// Un ringraziamento speciale al Team di Epicode per aver reso possibile quest'avventura <3

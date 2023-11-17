@@ -125,6 +125,9 @@ users.patch("/users/update/:id", getUser, async (req, res) => {
   if (req.body.role != null) {
     res.user.role = req.body.role;
   }
+  if (req.body.username != null) {
+    res.user.username = req.body.username;
+  }
 
   try {
     const updatedUser = await res.user.save();
